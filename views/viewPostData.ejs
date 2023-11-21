@@ -1,0 +1,25 @@
+<a href="/post">Add Post</a>
+<table border="1">
+    <tr>
+        <td>Name </td>
+        <td>Content </td>
+        <td>DELETE </td>
+        <td>UPDATE </td>
+    </tr>
+    <% for (var post of psData){ %>
+        <tr>
+            <td>
+                <%= post.name %>
+            </td>
+            <td>
+                <%= post.content %>
+            </td>
+            <td>
+                <a href="/post/deletePost/<%= post.id %>">DELETE</a>
+            </td>
+            <td>
+                <a href="/post/updatePost/<%= post.id %>">UPDATE</a>
+            </td>
+        </tr>
+        <% } %>
+</table>

@@ -1,0 +1,74 @@
+<form action="/EditStudent" method="post" enctype="multipart/form-data">
+    <h2>Edit Student details</h2>
+    <table border="1">
+        <input type="hidden" name="EditId" value="<%= oldStu.id %>" />
+        <tr>
+            <td>Name :</td>
+            <td><input type="text" name="name" value="<%= oldStu.name %>" /></td>
+            <br />
+        </tr>
+        <tr>
+            <td>Age :</td>
+            <td><input type="text" name="age" value="<%= oldStu.age %>" /></td>
+            <br />
+        </tr>
+        <tr>
+            <td>Gender :</td>
+            <td>
+                <input type="radio" name="gender" value="male" <% if(oldStu.gender=="male" ) { %>
+                <%= 'checked' %>
+                    <% } %>>Male <input type="radio" name="gender" value="female" <% if(oldStu.gender=="female" ) { %>
+                        <%= 'checked' %>
+                            <% } %>>Female
+            </td>
+        </tr>
+        <tr>
+            <td>Hobby :</td>
+            <td>
+                <input type="checkbox" name="hobby" value="reading" <% if(oldStu.hobby.includes('reading')){%>
+                <%= 'checked' %>
+                    <% } %>>Reading <input type="checkbox" name="hobby" value="cycling" <%
+                            if(oldStu.hobby.includes('cycling')){%>
+                        <%= 'checked' %>
+                            <%} %>>Cycling
+                                <input type="checkbox" name="hobby" value="eating" <%
+                                    if(oldStu.hobby.includes('eating')){%>
+                                <%= 'checked' %>
+                                    <%} %>>Eating
+            </td>
+        </tr>
+        <tr>
+            <td>City :</td>
+            <% var city=["Surat","Rajkot","Vadodara","Godhara"] %>
+                <td>
+                    <select name="city">
+                        <option value="">-- Select City -- </option>
+                        <% city.map((v)=> { %>
+                            <option value="<%= v %>" <% if(v==oldStu.city) {%>
+                                <%= 'selected' %>
+                                    <% } %>>
+                                        <%= v %>
+                            </option>
+
+                            <% }) %>
+                    </select>
+                </td>
+        </tr>
+        <tr>
+            <td>Message :</td>
+            <td>
+                <textarea name="message" cols="30" rows="5"><%= oldStu.message %></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="file">
+                <img src="<%= oldStu.adminImage %>" height="100">
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="submit" value="Edit Student" /></td>
+        </tr>
+    </table>
+</form>
+
+<a href="/View_data">View Data</a>
